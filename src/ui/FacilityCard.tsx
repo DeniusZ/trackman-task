@@ -105,6 +105,7 @@ export const FacilityCard: React.FC<FacilityCardProps> = ({
   imageUrl,
   isDefault,
 }) => {
+  const isOpen = isFacilityOpen(openingTime, closingTime);
   return (
     <StyledFacilityCard>
       <ImageContainer>
@@ -117,7 +118,9 @@ export const FacilityCard: React.FC<FacilityCardProps> = ({
       </ImageContainer>
       <StyledHeading>
         <StyledName>{name}</StyledName>
-        <Label isOpen={isFacilityOpen(openingTime, closingTime)} />
+        <Label variant={isOpen ? "default" : "danger"}>
+          {isOpen ? "Open" : "Closed"}
+        </Label>
       </StyledHeading>
       <BottomContainer>
         <img src={iconAddressPin} />

@@ -51,6 +51,7 @@ export const Button = styled.button<ButtonProps>`
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+  letter-spacing: 0.5px;
 
   ${(props) => sizes[props.size]}
   ${(props) => variants[props.variant]}

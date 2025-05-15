@@ -1,23 +1,25 @@
-import type React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const StyledLabel = styled.span<{ $isOpen: boolean }>`
+const variants = {
+  default: css`
+    background-color: #ebffee;
+    color: #14ae5c;
+  `,
+  danger: css`
+    background-color: #fee9e7;
+    color: #ec221f;
+  `,
+};
+
+export type LabelProps = {
+  variant: "default" | "danger";
+};
+
+export const Label = styled.span<LabelProps>`
   padding: 2px 6px;
   font-weight: 600;
   font-size: 14px;
   border-radius: 1rem;
   letter-spacing: 0.5px;
-
-  background-color: ${({ $isOpen }) => ($isOpen ? "#ebffee" : "#FEE9E7")};
-  color: ${({ $isOpen }) => ($isOpen ? "#14ae5c" : "#EC221F")};
+  ${(props) => variants[props.variant]}
 `;
-
-export type LabelProps = {
-  isOpen: boolean;
-};
-
-export const Label: React.FC<LabelProps> = ({ isOpen }) => {
-  return (
-    <StyledLabel $isOpen={isOpen}>{isOpen ? "Open" : "Closed"}</StyledLabel>
-  );
-};
