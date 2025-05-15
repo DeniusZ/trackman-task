@@ -1,31 +1,31 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
 import type React from "react";
+import { FacilityCard } from "../ui/FacilityCard";
+import styled from "styled-components";
+
+const StyledFacilities = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+`;
 
 export type FacilitiesProps = {
-  /* TODO */
+  facilities: {
+    name: string;
+    address: string;
+    openingTime: string;
+    closingTime: string;
+    imageUrl: string;
+    index: number;
+    isDefault: boolean;
+  }[];
 };
 
-export const Facilities: React.FC<FacilitiesProps> = () => {
+export const Facilities: React.FC<FacilitiesProps> = ({ facilities }) => {
   return (
-    <div>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-      <h1>Facilities</h1>
-    </div>
+    <StyledFacilities>
+      {facilities.map((facility) => {
+        return <FacilityCard key={facility.index} {...facility} />;
+      })}
+    </StyledFacilities>
   );
 };
