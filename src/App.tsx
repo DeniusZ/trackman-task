@@ -1,13 +1,16 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyles";
-import { Facilities } from "./pages/Facilities";
-import { Locations } from "./pages/Locations";
-import { Players } from "./pages/Players";
-import { AccessManagement } from "./pages/AccessManagement";
-import AppLayout from "./ui/AppLayout";
-import PageNotFound from "./pages/PageNotFound";
+import { AppLayout } from "./ui/AppLayout";
 
-function App() {
+import {
+  Facilities,
+  Locations,
+  Players,
+  AccessManagement,
+  PageNotFound,
+} from "./pages";
+
+const App: React.FC = () => {
   return (
     <>
       <GlobalStyles />
@@ -25,6 +28,6 @@ function App() {
       </BrowserRouter>
     </>
   );
-}
+};
 
 export default App;

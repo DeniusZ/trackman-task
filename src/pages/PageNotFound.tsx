@@ -23,7 +23,7 @@ const Box = styled.div`
   }
 `;
 
-function PageNotFound() {
+export const PageNotFound: React.FC = () => {
   return (
     <StyledPageNotFound>
       <Box>
@@ -31,6 +31,4 @@ function PageNotFound() {
       </Box>
     </StyledPageNotFound>
   );
-}
-
-export default PageNotFound;
+};

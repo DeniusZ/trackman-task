@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
 import type React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import Logo from "./Logo";
+import { Logo } from "./Logo";
 
 const StyledHeader = styled.nav`
   background-color: #2c2c2c;
@@ -36,11 +35,7 @@ const Link = styled.li`
   }
 `;
 
-export type HeaderProps = {
-  /* TODO */
-};
-
-export const Header: React.FC<HeaderProps> = () => {
+export const Header: React.FC = () => {
   return (
     <StyledHeader>
       <Logo />

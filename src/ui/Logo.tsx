@@ -5,12 +5,10 @@ const StyledLogo = styled.img`
   height: 1rem;
 `;
 
-function Logo() {
+export const Logo: React.FC = () => {
   return (
     <Link to="/">
       <StyledLogo src="/trackman-logo.png" alt="trackman logo" />
     </Link>
   );
-}
-
-export default Logo;
+};
