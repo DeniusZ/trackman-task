@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyles";
 import { AppLayout } from "./ui/AppLayout";
+import { img1, img2, img3, img4, img5, img6 } from "./assets/illustrations";
 
 import {
   Facilities,
@@ -15,8 +16,8 @@ const facilities = [
     name: "Green Valley Golf Club",
     address: "123 Fairway Drive, Copenhagen, Denmark",
     openingTime: "9:00",
-    closingTime: "17:00",
-    imageUrl: "url1",
+    closingTime: "14:00",
+    imageUrl: img1,
     index: 0,
     isDefault: true,
   },
@@ -25,7 +26,7 @@ const facilities = [
     address: "123 Fairway Drive, Copenhagen, Denmark",
     openingTime: "8:00",
     closingTime: "18:00",
-    imageUrl: "url1",
+    imageUrl: img2,
     index: 1,
     isDefault: false,
   },
@@ -34,7 +35,7 @@ const facilities = [
     address: "123 Fairway Drive, Copenhagen, Denmark",
     openingTime: "8:00",
     closingTime: "18:00",
-    imageUrl: "url1",
+    imageUrl: img3,
     index: 2,
     isDefault: false,
   },
@@ -43,7 +44,7 @@ const facilities = [
     address: "123 Fairway Drive, Copenhagen, Denmark",
     openingTime: "8:00",
     closingTime: "18:00",
-    imageUrl: "url1",
+    imageUrl: img4,
     index: 3,
     isDefault: false,
   },
@@ -52,8 +53,17 @@ const facilities = [
     address: "123 Fairway Drive, Copenhagen, Denmark",
     openingTime: "14:00",
     closingTime: "22:00",
-    imageUrl: "url1",
+    imageUrl: img5,
     index: 4,
+    isDefault: false,
+  },
+  {
+    name: "Green Valley Golf Club 6",
+    address: "123 Fairway Drive, Copenhagen, Denmark",
+    openingTime: "14:00",
+    closingTime: "22:00",
+    imageUrl: img6,
+    index: 5,
     isDefault: false,
   },
 ];

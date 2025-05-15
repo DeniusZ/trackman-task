@@ -3,6 +3,18 @@ import styled from "styled-components";
 import { isFacilityOpen } from "../utils/helpers";
 import { Label } from "./Label";
 import { Button } from "./Button";
+import { iconAddressPin, iconStar, iconTrashCan } from "../assets/icons";
+
+const StyledImage = styled.img`
+  height: 12rem;
+  width: 100%;
+
+  object-fit: cover;
+  display: block;
+
+  transition-duration: 0.3s;
+  transition-property: transform, filter;
+`;
 
 const StyledFacilityCard = styled.div`
   display: flex;
@@ -22,6 +34,11 @@ const StyledFacilityCard = styled.div`
   &:hover {
     box-shadow: 0px 16px 16px -8px rgba(12, 12, 13, 0.1),
       0px 4px 4px -4px rgba(12, 12, 13, 0.05);
+  }
+
+  &:hover ${StyledImage}, &:focus-within ${StyledImage} {
+    filter: brightness(0.7);
+    transform: scale(1.1);
   }
 `;
 
@@ -49,6 +66,26 @@ const StyledAddress = styled.p`
 const BottomContainer = styled.div`
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.25rem;
+`;
+
+const DefaultIcon = styled.span`
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: #975102bf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
 `;
 
 export type FacilityCardProps = {
@@ -70,16 +107,27 @@ export const FacilityCard: React.FC<FacilityCardProps> = ({
 }) => {
   return (
     <StyledFacilityCard>
-      <img src={imageUrl} />
-      <span>{isDefault ? "⭐️" : ""}</span>
+      <ImageContainer>
+        <StyledImage src={imageUrl} />
+        {isDefault && (
+          <DefaultIcon>
+            <img src={iconStar} />
+          </DefaultIcon>
+        )}
+      </ImageContainer>
       <StyledHeading>
         <StyledName>{name}</StyledName>
         <Label isOpen={isFacilityOpen(openingTime, closingTime)} />
       </StyledHeading>
       <BottomContainer>
+        <img src={iconAddressPin} />
         <StyledAddress>{address}</StyledAddress>
-        <Button>delete</Button>
-        <Button>Edit</Button>
+        <Button size="icon" variant="secondary">
+          <img src={iconTrashCan} />
+        </Button>
+        <Button size="small" variant="secondary">
+          Edit
+        </Button>
       </BottomContainer>
     </StyledFacilityCard>
   );
