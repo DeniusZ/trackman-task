@@ -10,9 +10,9 @@ const Heading = styled.h1`
   margin-bottom: 1rem;
 `;
 
-export type CreateFacilityProps = {};
+export type EditFacilityProps = {};
 
-export const CreateFacility: React.FC<CreateFacilityProps> = () => {
+export const EditFacility: React.FC<EditFacilityProps> = () => {
   const navigate = useNavigate();
   const handleCancel = () => {
     navigate(-1);
@@ -20,7 +20,7 @@ export const CreateFacility: React.FC<CreateFacilityProps> = () => {
 
   return (
     <div>
-      <Heading>Create a New Facility</Heading>
+      <Heading>Edit Facility</Heading>
       <Form />
     </div>
   );

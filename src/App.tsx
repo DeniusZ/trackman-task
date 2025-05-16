@@ -11,6 +11,7 @@ import {
   PageNotFound,
 } from "./pages";
 import { CreateFacility } from "./pages/CreateFacility";
+import { EditFacility } from "./pages/EditFacility";
 
 const facilities = [
   {
@@ -82,7 +83,7 @@ const App: React.FC = () => {
               element={<Facilities facilities={facilities} />}
             />
             <Route path="facilities/new" element={<CreateFacility />} />
-            <Route path="facilities/:id" element={<div>edit</div>} />
+            <Route path="facilities/:id" element={<EditFacility />} />
 
             <Route path="locations" element={<Locations />} />
             <Route path="players" element={<Players />} />
