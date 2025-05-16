@@ -10,6 +10,7 @@ import {
   AccessManagement,
   PageNotFound,
 } from "./pages";
+import { CreateFacility } from "./pages/CreateFacility";
 
 const facilities = [
   {
@@ -80,6 +81,9 @@ const App: React.FC = () => {
               path="facilities"
               element={<Facilities facilities={facilities} />}
             />
+            <Route path="facilities/new" element={<CreateFacility />} />
+            <Route path="facilities/:id" element={<div>edit</div>} />
+
             <Route path="locations" element={<Locations />} />
             <Route path="players" element={<Players />} />
             <Route path="access-management" element={<AccessManagement />} />

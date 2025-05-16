@@ -13,7 +13,8 @@ body {
   font-family: "Inter", sans-serif;
   min-height: 100vh;
   line-height: 1.5;
-  font-size: 1.6rem;
+  font-size: 1rem;
+  letter-spacing: 0.25px;
 
   color: #1E1E1E
 }
