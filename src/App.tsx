@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyles";
-import { AppLayout } from "./ui/AppLayout";
+import { AppLayout } from "./components/AppLayout";
 import { img1, img2, img3, img4, img5, img6 } from "./assets/illustrations";
 
 import {

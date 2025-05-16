@@ -2,7 +2,7 @@ import type React from "react";
 
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Form } from "../ui/Form";
+import { Form } from "../components/Form";
 
 const Heading = styled.h1`
   font-weight: 600;

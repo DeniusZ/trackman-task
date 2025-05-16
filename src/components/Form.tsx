@@ -73,8 +73,22 @@ const CheckboxWrapper = styled.div`
   gap: 0.5rem;
 
   input[type="checkbox"] {
-    margin-top: 0.2rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    accent-color: #ec691a;
+    cursor: pointer;
+    &:focus {
+      outline-color: #ec691a;
+    }
   }
+`;
+
+const CheckboxField = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-end;
 `;
 
 const ButtonRow = styled.div`
@@ -121,7 +135,7 @@ export const Form: React.FC<FormProps> = () => {
         <Input type="url" id="imageUrl" name="imageUrl" required />
       </Field>
 
-      <Field>
+      <CheckboxField>
         <StyledLabel htmlFor="isDefault">
           Default Facility
           <span>
@@ -130,9 +144,9 @@ export const Form: React.FC<FormProps> = () => {
           </span>
         </StyledLabel>
         <CheckboxWrapper>
-          <Input type="checkbox" id="isDefault" name="isDefault" />
+          <input type="checkbox" id="isDefault" name="isDefault" />
         </CheckboxWrapper>
-      </Field>
+      </CheckboxField>
 
       <SubHeading>Working Hours</SubHeading>
       <HoursRow>

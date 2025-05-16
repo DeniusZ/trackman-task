@@ -1,7 +1,7 @@
 import type React from "react";
-import { FacilityCard } from "../ui/FacilityCard";
+import { FacilityCard } from "../components/FacilityCard";
 import styled from "styled-components";
-import { Button } from "../ui/Button";
+import { Button } from "../components/Button";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
