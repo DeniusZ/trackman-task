@@ -40,22 +40,15 @@ const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "loading":
       return { ...state, isLoading: true };
-    case "facilities/loaded": {
-      return {
-        ...state,
-        isLoading: false,
-        facilities: action.payload,
-      };
-    }
+    case "facilities/loaded":
     case "facility/created":
     case "facility/updated":
-    case "facility/deleted": {
+    case "facility/deleted":
       return {
         ...state,
         isLoading: false,
         facilities: action.payload,
       };
-    }
     case "error":
       return { ...state, isLoading: false, error: action.payload };
     default:
@@ -101,12 +94,9 @@ export const FacilitiesProvider: React.FC<{ children: ReactNode }> = ({
     dispatch({ type: "loading" });
     try {
       let updated = facilities.map((f) =>
-        f.id === updatedFacility.id
-          ? updatedFacility
-          : { ...f, isDefault: updatedFacility.isDefault ? false : f.isDefault }
+        f.id === updatedFacility.id ? updatedFacility : f
       );
 
-      // If the updated one is marked default, remove it from others
       if (updatedFacility.isDefault) {
         updated = updated.map((f) =>
           f.id !== updatedFacility.id ? { ...f, isDefault: false } : f

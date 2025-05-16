@@ -12,7 +12,7 @@ const variants = {
 };
 
 export type LabelProps = {
-  variant: "default" | "danger";
+  variant?: "default" | "danger";
 };
 
 export const Label = styled.span<LabelProps>`
@@ -21,5 +21,5 @@ export const Label = styled.span<LabelProps>`
   font-size: 14px;
   border-radius: 1rem;
   letter-spacing: 0.5px;
-  ${(props) => variants[props.variant]}
+  ${(props) => variants[props.variant ?? "default"]}
 `;

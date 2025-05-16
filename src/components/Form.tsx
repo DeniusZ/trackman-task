@@ -240,15 +240,10 @@ export const Form: React.FC<FormProps> = ({ facilityToEdit }) => {
         </Field>
       </HoursRow>
       <ButtonRow>
-        <Button
-          variant="secondary"
-          size="medium"
-          onClick={handleCancel}
-          type="reset"
-        >
+        <Button variant="secondary" onClick={handleCancel} type="reset">
           Cancel
         </Button>
-        <Button variant="primary" size="medium" type="submit">
+        <Button type="submit">
           {isEditSession ? "Update Facility" : "Create Facility"}
         </Button>
       </ButtonRow>

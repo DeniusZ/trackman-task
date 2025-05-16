@@ -28,9 +28,7 @@ export const Facilities: React.FC = () => {
   return (
     <Container>
       <StyledLink to="new">
-        <Button size="medium" variant="primary">
-          Create Facility
-        </Button>
+        <Button>Create Facility</Button>
       </StyledLink>
 
       <StyledFacilities>

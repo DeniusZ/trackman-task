@@ -39,8 +39,8 @@ const variants = {
 };
 
 export type ButtonProps = {
-  variant: "primary" | "secondary";
-  size: "icon" | "small" | "medium";
+  variant?: "primary" | "secondary";
+  size?: "icon" | "small" | "medium";
 };
 
 export const Button = styled.button<ButtonProps>`
@@ -53,11 +53,6 @@ export const Button = styled.button<ButtonProps>`
   transition: background-color 0.2s ease-in-out;
   letter-spacing: 0.5px;
 
-  ${(props) => sizes[props.size]}
-  ${(props) => variants[props.variant]}
+  ${(props) => sizes[props.size ?? "medium"]}
+  ${(props) => variants[props.variant ?? "primary"]}
 `;
-
-// Button.defaultProps = {
-//   size: "medium",
-//   variation: "primary",
-// };

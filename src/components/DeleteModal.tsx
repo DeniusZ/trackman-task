@@ -56,12 +56,10 @@ export const DeleteModal: React.FC<DeleteModalProps> = ({
       </div>
       <Separator />
       <BottomContainer>
-        <Button variant="secondary" size="medium" onClick={onClose}>
+        <Button variant="secondary" onClick={onClose}>
           Cancel
         </Button>
-        <Button variant="primary" size="medium" onClick={onDelete}>
-          Yes, Delete
-        </Button>
+        <Button onClick={onDelete}>Yes, Delete</Button>
       </BottomContainer>
     </Modal>
   );
