@@ -2,6 +2,10 @@ import type React from "react";
 import { Button } from "./Button";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useFacilities } from "../contexts/FacilitiesContext";
+import type { Facility } from "../types";
+
+import { useForm } from "react-hook-form";
 
 const StyledForm = styled.form`
   display: flex;
@@ -103,36 +107,85 @@ const HoursRow = styled.div`
   gap: 0.75rem;
 `;
 
-export type FormProps = {};
+const Error = styled.span`
+  font-size: 0.875rem;
+  color: red;
+`;
 
-export const Form: React.FC<FormProps> = () => {
+export type FormProps = { facilityToEdit?: Facility };
+
+export const Form: React.FC<FormProps> = ({ facilityToEdit = {} }) => {
   const navigate = useNavigate();
   const handleCancel = () => {
     navigate(-1);
   };
+  const { createFacility, editFacility } = useFacilities();
+
+  const { id: editId, ...editValues } = facilityToEdit;
+  const isEditSession = Boolean(editId);
+  const { register, handleSubmit, formState } = useForm({
+    defaultValues: isEditSession ? editValues : {},
+  });
+
+  const { errors } = formState;
+
+  const onSubmit = (data: Facility) => {
+    if (isEditSession) editFacility({ ...data, id: editId || 0 });
+    else createFacility({ ...data, id: Date.now() });
+
+    navigate("/facilities");
+  };
 
   return (
-    <StyledForm>
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <SubHeading>Facility Information</SubHeading>
 
       <Field>
         <StyledLabel htmlFor="name">Facility Name *</StyledLabel>
-        <Input type="text" id="name" name="name" required />
+        <Input
+          type="text"
+          id="name"
+          {...register("name", { required: "This field is required" })}
+        />
+        {errors?.name?.message && (
+          <Error>{errors.name.message as string}</Error>
+        )}
       </Field>
 
       <Field>
         <StyledLabel htmlFor="address">Address *</StyledLabel>
-        <Input type="text" id="address" name="address" required />
+        <Input
+          type="text"
+          id="address"
+          {...register("address", { required: "This field is required" })}
+        />
+        {errors?.address?.message && (
+          <Error>{errors.address.message as string}</Error>
+        )}
       </Field>
 
       <Field>
         <StyledLabel htmlFor="description">Description *</StyledLabel>
-        <TextArea id="description" name="description" rows={4} required />
+        <TextArea
+          id="description"
+          rows={4}
+          {...register("description", { required: "This field is required" })}
+        />
+        {errors?.description?.message && (
+          <Error>{errors.description.message as string}</Error>
+        )}
       </Field>
 
       <Field>
         <StyledLabel htmlFor="imageUrl">Cover Image URL *</StyledLabel>
-        <Input type="url" id="imageUrl" name="imageUrl" required />
+        <Input
+          type="url"
+          id="imageUrl"
+          {...register("imageUrl", { required: "This field is required" })}
+        />
+        {errors?.imageUrl?.message && (
+          <Error>{errors.imageUrl.message as string}</Error>
+        )}
       </Field>
 
       <CheckboxField>
@@ -144,7 +197,7 @@ export const Form: React.FC<FormProps> = () => {
           </span>
         </StyledLabel>
         <CheckboxWrapper>
-          <input type="checkbox" id="isDefault" name="isDefault" />
+          <input type="checkbox" id="isDefault" {...register("isDefault")} />
         </CheckboxWrapper>
       </CheckboxField>
 
@@ -152,12 +205,26 @@ export const Form: React.FC<FormProps> = () => {
       <HoursRow>
         <Field>
           <StyledLabel htmlFor="openingTime">Opening Time *</StyledLabel>
-          <Input type="time" id="openingTime" name="openingTime" required />
+          <Input
+            type="time"
+            id="openingTime"
+            {...register("openingTime", { required: "This field is required" })}
+          />
+          {errors?.openingTime?.message && (
+            <Error>{errors.openingTime.message as string}</Error>
+          )}
         </Field>
 
         <Field>
           <StyledLabel htmlFor="closingTime">Closing Time *</StyledLabel>
-          <Input type="time" id="closingTime" name="closingTime" required />
+          <Input
+            type="time"
+            id="closingTime"
+            {...register("closingTime", { required: "This field is required" })}
+          />
+          {errors?.closingTime?.message && (
+            <Error>{errors.closingTime.message as string}</Error>
+          )}
         </Field>
       </HoursRow>
       <ButtonRow>
@@ -170,7 +237,7 @@ export const Form: React.FC<FormProps> = () => {
           Cancel
         </Button>
         <Button variant="primary" size="medium" type="submit">
-          Create Facility
+          {isEditSession ? "Update Facility" : "Create Facility"}
         </Button>
       </ButtonRow>
     </StyledForm>

@@ -28,11 +28,13 @@ const Separator = styled.hr`
 export type DeleteModalProps = {
   facilityName: string;
   onClose: () => void;
+  onDelete: () => void;
 };
 
 export const DeleteModal: React.FC<DeleteModalProps> = ({
   facilityName,
   onClose,
+  onDelete,
 }) => {
   return (
     <Modal onClose={onClose}>
@@ -57,7 +59,7 @@ export const DeleteModal: React.FC<DeleteModalProps> = ({
         <Button variant="secondary" size="medium" onClick={onClose}>
           Cancel
         </Button>
-        <Button variant="primary" size="medium">
+        <Button variant="primary" size="medium" onClick={onDelete}>
           Yes, Delete
         </Button>
       </BottomContainer>

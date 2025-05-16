@@ -7,6 +7,7 @@ import { iconAddressPin, iconStar, iconTrashCan } from "../assets/icons";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { DeleteModal } from "./DeleteModal";
+import { useFacilities } from "../contexts/FacilitiesContext";
 
 const StyledImage = styled.img`
   height: 12rem;
@@ -102,7 +103,7 @@ export type FacilityCardProps = {
   closingTime: string;
   imageUrl: string;
   isDefault?: boolean;
-  index: number;
+  id: number;
 };
 
 export const FacilityCard: React.FC<FacilityCardProps> = ({
@@ -112,10 +113,16 @@ export const FacilityCard: React.FC<FacilityCardProps> = ({
   closingTime,
   imageUrl,
   isDefault,
-  index,
+  id,
 }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const isOpen = isFacilityOpen(openingTime, closingTime);
+  const { deleteFacility } = useFacilities();
+
+  const handleDelete = () => {
+    deleteFacility(id);
+    setShowDeleteModal(false);
+  };
 
   return (
     <StyledFacilityCard>
@@ -143,7 +150,7 @@ export const FacilityCard: React.FC<FacilityCardProps> = ({
         >
           <img src={iconTrashCan} />
         </Button>
-        <StyledLink to={`${index}`}>
+        <StyledLink to={`${id}`}>
           <Button size="small" variant="secondary">
             Edit
           </Button>
@@ -153,6 +160,7 @@ export const FacilityCard: React.FC<FacilityCardProps> = ({
         <DeleteModal
           facilityName={name}
           onClose={() => setShowDeleteModal(false)}
+          onDelete={handleDelete}
         />
       )}
     </StyledFacilityCard>

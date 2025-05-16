@@ -1,8 +1,9 @@
 import type React from "react";
 
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Form } from "../components/Form";
+import { useFacilities } from "../contexts/FacilitiesContext";
 
 const Heading = styled.h1`
   font-weight: 600;
@@ -10,18 +11,18 @@ const Heading = styled.h1`
   margin-bottom: 1rem;
 `;
 
-export type EditFacilityProps = {};
+export const EditFacility: React.FC = () => {
+  const { id } = useParams();
+  const { facilities } = useFacilities();
 
-export const EditFacility: React.FC<EditFacilityProps> = () => {
-  const navigate = useNavigate();
-  const handleCancel = () => {
-    navigate(-1);
-  };
+  const facilityToEdit = facilities.find(
+    (facility) => facility.id === Number(id)
+  );
 
   return (
     <div>
       <Heading>Edit Facility</Heading>
-      <Form />
+      <Form facilityToEdit={facilityToEdit} />
     </div>
   );
 };

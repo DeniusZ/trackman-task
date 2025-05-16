@@ -1,7 +1,6 @@
 import type React from "react";
 
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import { Form } from "../components/Form";
 
 const Heading = styled.h1`
@@ -10,14 +9,7 @@ const Heading = styled.h1`
   margin-bottom: 1rem;
 `;
 
-export type CreateFacilityProps = {};
-
-export const CreateFacility: React.FC<CreateFacilityProps> = () => {
-  const navigate = useNavigate();
-  const handleCancel = () => {
-    navigate(-1);
-  };
-
+export const CreateFacility: React.FC = () => {
   return (
     <div>
       <Heading>Create a New Facility</Heading>
