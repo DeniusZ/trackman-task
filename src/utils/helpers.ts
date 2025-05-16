@@ -15,3 +15,60 @@ export const isFacilityOpen = (
 
   return now >= openTime && now <= closeTime;
 };
+
+// const dummyData: Facility[] = [
+//   {
+//     name: "Green Valley Golf Club",
+//     address: "123 Fairway Drive, Copenhagen, Denmark",
+//     openingTime: "9:00",
+//     closingTime: "14:00",
+//     imageUrl: "/",
+//     id: 1000,
+//     isDefault: true,
+//   },
+//   {
+//     name: "Green Valley Golf Club 2",
+//     address: "123 Fairway Drive, Copenhagen, Denmark",
+//     openingTime: "8:00",
+//     closingTime: "18:00",
+//     imageUrl: "/",
+//     id: 1,
+//     isDefault: false,
+//   },
+//   {
+//     name: "Green Valley Golf Club 3",
+//     address: "123 Fairway Drive, Copenhagen, Denmark",
+//     openingTime: "8:00",
+//     closingTime: "18:00",
+//     imageUrl: "/",
+//     id: 2,
+//     isDefault: false,
+//   },
+//   {
+//     name: "Green Valley Golf Club 4",
+//     address: "123 Fairway Drive, Copenhagen, Denmark",
+//     openingTime: "8:00",
+//     closingTime: "18:00",
+//     imageUrl: "/",
+//     id: 3,
+//     isDefault: false,
+//   },
+//   {
+//     name: "Green Valley Golf Club 5",
+//     address: "123 Fairway Drive, Copenhagen, Denmark",
+//     openingTime: "14:00",
+//     closingTime: "22:00",
+//     imageUrl: "/",
+//     id: 4,
+//     isDefault: false,
+//   },
+//   {
+//     name: "Green Valley Golf Club 6",
+//     address: "123 Fairway Drive, Copenhagen, Denmark",
+//     openingTime: "14:00",
+//     closingTime: "22:00",
+//     imageUrl: "/",
+//     id: 5,
+//     isDefault: false,
+//   },
+// ];

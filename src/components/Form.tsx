@@ -114,17 +114,24 @@ const Error = styled.span`
 
 export type FormProps = { facilityToEdit?: Facility };
 
-export const Form: React.FC<FormProps> = ({ facilityToEdit = {} }) => {
+export const Form: React.FC<FormProps> = ({ facilityToEdit }) => {
   const navigate = useNavigate();
   const handleCancel = () => {
     navigate(-1);
   };
-  const { createFacility, editFacility } = useFacilities();
+  const { createFacility, editFacility, facilities } = useFacilities();
 
-  const { id: editId, ...editValues } = facilityToEdit;
+  const isFirstEntry = facilities.length === 0;
+
+  const { id: editId, ...editValues } =
+    facilityToEdit ?? ({} as Partial<Facility>);
   const isEditSession = Boolean(editId);
-  const { register, handleSubmit, formState } = useForm({
-    defaultValues: isEditSession ? editValues : {},
+
+  const { register, handleSubmit, formState } = useForm<Facility>({
+    defaultValues: {
+      ...(isEditSession ? editValues : {}),
+      isDefault: isFirstEntry || (isEditSession && editValues.isDefault),
+    },
   });
 
   const { errors } = formState;
@@ -197,7 +204,12 @@ export const Form: React.FC<FormProps> = ({ facilityToEdit = {} }) => {
           </span>
         </StyledLabel>
         <CheckboxWrapper>
-          <input type="checkbox" id="isDefault" {...register("isDefault")} />
+          <input
+            type="checkbox"
+            id="isDefault"
+            {...register("isDefault")}
+            disabled={isFirstEntry}
+          />
         </CheckboxWrapper>
       </CheckboxField>
 

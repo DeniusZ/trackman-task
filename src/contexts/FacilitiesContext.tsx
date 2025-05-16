@@ -1,10 +1,8 @@
 import React, { createContext, useReducer, useContext, useEffect } from "react";
 import type { Facility } from "../types";
-
 import type { ReactNode } from "react";
 
-// Type definitions
-
+// State types
 type State = {
   facilities: Facility[];
   isLoading: boolean;
@@ -14,120 +12,50 @@ type State = {
 type Action =
   | { type: "loading" }
   | { type: "facilities/loaded"; payload: Facility[] }
-  | { type: "facility/loaded"; payload: Facility }
-  | { type: "facility/created"; payload: Facility }
-  | { type: "facility/updated"; payload: Facility }
-  | { type: "facility/deleted"; payload: number } // id
+  | { type: "facility/created"; payload: Facility[] }
+  | { type: "facility/updated"; payload: Facility[] }
+  | { type: "facility/deleted"; payload: Facility[] }
   | { type: "error"; payload: string };
 
 type FacilitiesContextType = {
   facilities: Facility[];
   isLoading: boolean;
-
   getFacilities: () => Promise<void>;
   createFacility: (facility: Facility) => Promise<void>;
   editFacility: (facility: Facility) => Promise<void>;
   deleteFacility: (id: number) => Promise<void>;
 };
 
-// const dummyData: Facility[] = [
-//   {
-//     name: "Green Valley Golf Club",
-//     address: "123 Fairway Drive, Copenhagen, Denmark",
-//     openingTime: "9:00",
-//     closingTime: "14:00",
-//     imageUrl: "/",
-//     id: 1000,
-//     isDefault: true,
-//   },
-//   {
-//     name: "Green Valley Golf Club 2",
-//     address: "123 Fairway Drive, Copenhagen, Denmark",
-//     openingTime: "8:00",
-//     closingTime: "18:00",
-//     imageUrl: "/",
-//     id: 1,
-//     isDefault: false,
-//   },
-//   {
-//     name: "Green Valley Golf Club 3",
-//     address: "123 Fairway Drive, Copenhagen, Denmark",
-//     openingTime: "8:00",
-//     closingTime: "18:00",
-//     imageUrl: "/",
-//     id: 2,
-//     isDefault: false,
-//   },
-//   {
-//     name: "Green Valley Golf Club 4",
-//     address: "123 Fairway Drive, Copenhagen, Denmark",
-//     openingTime: "8:00",
-//     closingTime: "18:00",
-//     imageUrl: "/",
-//     id: 3,
-//     isDefault: false,
-//   },
-//   {
-//     name: "Green Valley Golf Club 5",
-//     address: "123 Fairway Drive, Copenhagen, Denmark",
-//     openingTime: "14:00",
-//     closingTime: "22:00",
-//     imageUrl: "/",
-//     id: 4,
-//     isDefault: false,
-//   },
-//   {
-//     name: "Green Valley Golf Club 6",
-//     address: "123 Fairway Drive, Copenhagen, Denmark",
-//     openingTime: "14:00",
-//     closingTime: "22:00",
-//     imageUrl: "/",
-//     id: 5,
-//     isDefault: false,
-//   },
-// ];
-
-// Initial state
 const initialState: State = {
   facilities: [],
   isLoading: false,
   error: null,
 };
 
-// Create context with default value
 const FacilitiesContext = createContext<FacilitiesContextType | undefined>(
   undefined
 );
 
-// Reducer
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "loading":
       return { ...state, isLoading: true };
-    case "facilities/loaded":
-      return { ...state, isLoading: false, facilities: action.payload };
+    case "facilities/loaded": {
+      return {
+        ...state,
+        isLoading: false,
+        facilities: action.payload,
+      };
+    }
     case "facility/created":
-      return {
-        ...state,
-        isLoading: false,
-        facilities: [...state.facilities, action.payload],
-      };
     case "facility/updated":
+    case "facility/deleted": {
       return {
         ...state,
         isLoading: false,
-        facilities: state.facilities.map((facility) =>
-          facility.id === action.payload.id ? action.payload : facility
-        ),
+        facilities: action.payload,
       };
-    case "facility/deleted":
-      return {
-        ...state,
-        isLoading: false,
-        facilities: state.facilities.filter(
-          (facility) => facility.id !== action.payload
-        ),
-      };
+    }
     case "error":
       return { ...state, isLoading: false, error: action.payload };
     default:
@@ -135,7 +63,6 @@ const reducer = (state: State, action: Action): State => {
   }
 };
 
-// Provider
 export const FacilitiesProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
@@ -148,31 +75,45 @@ export const FacilitiesProvider: React.FC<{ children: ReactNode }> = ({
     dispatch({ type: "loading" });
     try {
       const data = localStorage.getItem("facilities");
-      const parsed = data ? JSON.parse(data) : [];
+      const parsed: Facility[] = data ? JSON.parse(data) : [];
       dispatch({ type: "facilities/loaded", payload: parsed });
     } catch {
       dispatch({ type: "error", payload: "Failed to load facilities." });
     }
   };
 
-  const createFacility = async (facility: Facility) => {
+  const createFacility = async (newFacility: Facility) => {
     dispatch({ type: "loading" });
     try {
-      const updatedFacilities = [...facilities, facility];
-      localStorage.setItem("facilities", JSON.stringify(updatedFacilities));
-      dispatch({ type: "facility/created", payload: facility });
+      const existing = facilities.map((f) => ({
+        ...f,
+        isDefault: newFacility.isDefault ? false : f.isDefault,
+      }));
+      const updated = [...existing, newFacility];
+      localStorage.setItem("facilities", JSON.stringify(updated));
+      dispatch({ type: "facility/created", payload: updated });
     } catch {
       dispatch({ type: "error", payload: "Failed to create facility." });
     }
   };
 
-  const editFacility = async (updated: Facility) => {
+  const editFacility = async (updatedFacility: Facility) => {
     dispatch({ type: "loading" });
     try {
-      const updatedFacilities = facilities.map((f) =>
-        f.id === updated.id ? updated : f
+      let updated = facilities.map((f) =>
+        f.id === updatedFacility.id
+          ? updatedFacility
+          : { ...f, isDefault: updatedFacility.isDefault ? false : f.isDefault }
       );
-      localStorage.setItem("facilities", JSON.stringify(updatedFacilities));
+
+      // If the updated one is marked default, remove it from others
+      if (updatedFacility.isDefault) {
+        updated = updated.map((f) =>
+          f.id !== updatedFacility.id ? { ...f, isDefault: false } : f
+        );
+      }
+
+      localStorage.setItem("facilities", JSON.stringify(updated));
       dispatch({ type: "facility/updated", payload: updated });
     } catch {
       dispatch({ type: "error", payload: "Failed to update facility." });
@@ -182,9 +123,15 @@ export const FacilitiesProvider: React.FC<{ children: ReactNode }> = ({
   const deleteFacility = async (id: number) => {
     dispatch({ type: "loading" });
     try {
-      const filtered = facilities.filter((f) => f.id !== id);
-      localStorage.setItem("facilities", JSON.stringify(filtered));
-      dispatch({ type: "facility/deleted", payload: id });
+      const remaining = facilities.filter((f) => f.id !== id);
+      const wasDefault = facilities.find((f) => f.id === id)?.isDefault;
+
+      if (wasDefault && remaining.length > 0) {
+        remaining[0] = { ...remaining[0], isDefault: true };
+      }
+
+      localStorage.setItem("facilities", JSON.stringify(remaining));
+      dispatch({ type: "facility/deleted", payload: remaining });
     } catch {
       dispatch({ type: "error", payload: "Failed to delete facility." });
     }
@@ -210,7 +157,6 @@ export const FacilitiesProvider: React.FC<{ children: ReactNode }> = ({
   );
 };
 
-// Custom hook to use context
 export const useFacilities = (): FacilitiesContextType => {
   const context = useContext(FacilitiesContext);
   if (!context) {
