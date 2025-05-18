@@ -6,20 +6,15 @@ import { Link } from "react-router-dom";
 import { useFacilities } from "../contexts/FacilitiesContext";
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
   gap: 1rem;
-  align-items: flex-end;
-`;
-
-const StyledFacilities = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  margin-left: auto;
+  grid-column: 1 / -1;
 `;
 
 export const Facilities: React.FC = () => {
@@ -30,12 +25,9 @@ export const Facilities: React.FC = () => {
       <StyledLink to="new">
         <Button>Create Facility</Button>
       </StyledLink>
-
-      <StyledFacilities>
-        {facilities.map((facility) => {
-          return <FacilityCard key={facility.id} {...facility} />;
-        })}
-      </StyledFacilities>
+      {facilities.map((facility) => {
+        return <FacilityCard key={facility.id} {...facility} />;
+      })}
     </Container>
   );
 };

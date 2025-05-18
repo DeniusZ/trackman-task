@@ -27,9 +27,6 @@ const StyledFacilityCard = styled.div`
   padding: 0.75rem;
   gap: 0.75rem;
 
-  width: 348px;
-  min-width: 348px;
-
   background: #ffffff;
   border-radius: 8px;
 
@@ -70,13 +67,23 @@ const StyledAddress = styled.p`
 const BottomContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.125rem;
+  > img {
+    margin-bottom: 3px;
+  }
 `;
 
 const ImageContainer = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: 0.25rem;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
 `;
 
 const DefaultIcon = styled.span`
@@ -143,18 +150,20 @@ export const FacilityCard: React.FC<FacilityCardProps> = ({
       <BottomContainer>
         <img src={iconAddressPin} />
         <StyledAddress>{address}</StyledAddress>
-        <Button
-          size="icon"
-          variant="secondary"
-          onClick={() => setShowDeleteModal(true)}
-        >
-          <img src={iconTrashCan} />
-        </Button>
-        <StyledLink to={`${id}`}>
-          <Button size="small" variant="secondary">
-            Edit
+        <ButtonContainer>
+          <Button
+            size="icon"
+            variant="secondary"
+            onClick={() => setShowDeleteModal(true)}
+          >
+            <img src={iconTrashCan} />
           </Button>
-        </StyledLink>
+          <StyledLink to={`${id}`}>
+            <Button size="small" variant="secondary">
+              Edit
+            </Button>
+          </StyledLink>
+        </ButtonContainer>
       </BottomContainer>
       {showDeleteModal && (
         <DeleteModal

@@ -121,11 +121,14 @@ export const Form: React.FC<FormProps> = ({ facilityToEdit }) => {
   };
   const { createFacility, editFacility, facilities } = useFacilities();
 
-  const isFirstEntry = facilities.length === 0;
-
   const { id: editId, ...editValues } =
     facilityToEdit ?? ({} as Partial<Facility>);
+
   const isEditSession = Boolean(editId);
+
+  // if the facility is being edited and there is only one facility - it is the first entry
+  const isFirstEntry =
+    facilities.length === 0 || (isEditSession && facilities.length === 1);
 
   const { register, handleSubmit, formState } = useForm<Facility>({
     defaultValues: {
