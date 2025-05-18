@@ -19,7 +19,7 @@ const BottomContainer = styled.div`
 const Separator = styled.hr`
   border: none;
   height: 1px;
-  background-color: #d9d9d9;
+  background-color: var(--color-gray-200);
   /* to override the padding of Modal */
   margin-left: -0.75rem;
   margin-right: -0.75rem;

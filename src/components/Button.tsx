@@ -6,13 +6,13 @@ const sizes = {
     height: 2rem;
   `,
   small: css`
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     font-weight: 600;
     padding: 0.4rem 1.5rem;
     height: 2rem;
   `,
   medium: css`
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     font-weight: 600;
     padding: 0.5rem 1.5rem;
     height: 2.25rem;
@@ -21,19 +21,19 @@ const sizes = {
 
 const variants = {
   primary: css`
-    color: #f3f3f3;
-    background-color: #ec691a;
+    color: var(--color-gray-100);
+    background-color: var(--color-orange-300);
 
     &:hover {
-      background-color: #cc570f;
+      background-color: var(--color-orange-400);
     }
   `,
   secondary: css`
-    color: #1e1e1e;
-    background: #f5f5f5;
+    color: var(--color-gray-700);
+    background: var(--color-gray-100);
 
     &:hover {
-      background-color: #e0e0e0;
+      background-color: var(--color-gray-200);
     }
   `,
 };

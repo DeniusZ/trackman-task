@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Logo } from "./Logo";
 
 const StyledHeader = styled.nav`
-  background-color: #2c2c2c;
+  background-color: var(--color-gray-600);
   padding: 1rem 4.8rem;
   display: flex;
   align-items: center;
@@ -18,19 +18,17 @@ const Links = styled.ul`
 `;
 
 const Link = styled.li`
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   font-weight: 600;
   letter-spacing: 0.5px;
 
   > a {
     transition: color 0.2s ease-in-out;
-    color: #767676;
+    color: var(--color-gray-400);
     text-decoration: none;
-    &.active {
-      color: #f3f3f3;
-    }
-    &:hover {
-      color: #f3f3f3;
+    &.active,
+    &.hover {
+      color: var(--color-gray-100);
     }
   }
 `;

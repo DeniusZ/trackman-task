@@ -2,12 +2,12 @@ import styled, { css } from "styled-components";
 
 const variants = {
   default: css`
-    background-color: #ebffee;
-    color: #14ae5c;
+    background-color: var(--color-green-50);
+    color: var(--color-green-500);
   `,
   danger: css`
-    background-color: #fee9e7;
-    color: #ec221f;
+    background-color: var(--color-red-50);
+    color: var(--color-red-500);
   `,
 };
 
@@ -18,7 +18,7 @@ export type LabelProps = {
 export const Label = styled.span<LabelProps>`
   padding: 2px 6px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   border-radius: 1rem;
   letter-spacing: 0.5px;
   ${(props) => variants[props.variant ?? "default"]}

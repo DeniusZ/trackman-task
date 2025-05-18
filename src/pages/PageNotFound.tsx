@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledPageNotFound = styled.main`
   height: 100vh;
-  background-color: #f2f2f2;
+  background-color: var(--color-gray-200);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,8 +10,8 @@ const StyledPageNotFound = styled.main`
 `;
 
 const Box = styled.div`
-  background-color: #fff;
-  border: 1px solid #111;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-700);
   border-radius: 1rem;
 
   padding: 4.8rem;

@@ -27,8 +27,8 @@ const StyledFacilityCard = styled.div`
   padding: 0.75rem;
   gap: 0.75rem;
 
-  background: #ffffff;
-  border-radius: 8px;
+  background: var(--color-white);
+  border-radius: 0.5rem;
 
   transition: box-shadow 0.2s ease-in-out;
 
@@ -50,15 +50,15 @@ const StyledHeading = styled.div`
 `;
 
 const StyledName = styled.p`
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 `;
 
 const StyledAddress = styled.p`
-  font-size: 0.875rem;
-  color: #757575;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-400);
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -92,7 +92,7 @@ const DefaultIcon = styled.span`
   left: 0.5rem;
   width: 2rem;
   height: 2rem;
-  background-color: #975102bf;
+  background-color: var(--color-brown-400);
   display: flex;
   justify-content: center;
   align-items: center;

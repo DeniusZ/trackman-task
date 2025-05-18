@@ -13,7 +13,7 @@ const StyledForm = styled.form`
   gap: 1rem;
   max-width: 72rem;
   margin: 1rem auto;
-  background-color: #fff;
+  background-color: var(--color-white);
   border-radius: 0.5rem;
   padding: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -21,7 +21,7 @@ const StyledForm = styled.form`
 
 const SubHeading = styled.h2`
   font-weight: 600;
-  font-size: 1.125rem;
+  font-size: var(--font-size-md);
 `;
 
 const Field = styled.div`
@@ -32,41 +32,41 @@ const Field = styled.div`
 
 const StyledLabel = styled.label`
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
 
   span {
     display: block;
     font-weight: 400;
-    font-size: 0.75rem;
-    color: #666;
+    font-size: var(--font-size-xs);
+    color: var(--color-gray-500);
     margin-top: 0.25rem;
   }
 `;
 
 const Input = styled.input`
   padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
-  border: 1px solid #ccc;
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-gray-300);
   border-radius: 0.375rem;
   min-width: 12rem;
 
   &:focus {
     outline: none;
-    border-color: #ec691a;
+    border-color: var(--color-orange-300);
     box-shadow: 0 0 0 2px rgba(236, 105, 26, 0.3);
   }
 `;
 
 const TextArea = styled.textarea`
   padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
-  border: 1px solid #ccc;
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-gray-300);
   border-radius: 0.375rem;
   resize: vertical;
 
   &:focus {
     outline: none;
-    border-color: #ec691a;
+    border-color: var(--color-orange-300);
     box-shadow: 0 0 0 2px rgba(236, 105, 26, 0.3);
   }
 `;
@@ -79,10 +79,10 @@ const CheckboxWrapper = styled.div`
   input[type="checkbox"] {
     width: 1.25rem;
     height: 1.25rem;
-    accent-color: #ec691a;
+    accent-color: var(--color-orange-300);
     cursor: pointer;
     &:focus {
-      outline-color: #ec691a;
+      outline-color: var(--color-orange-300);
     }
   }
 `;
@@ -108,7 +108,7 @@ const HoursRow = styled.div`
 `;
 
 const Error = styled.span`
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   color: red;
 `;
 

@@ -17,7 +17,7 @@ const Backdrop = styled.div`
 `;
 
 const StyledModal = styled.div`
-  background-color: #fff;
+  background-color: var(--color-white);
   border-radius: 0.5rem;
   padding: 0.5rem 0.75rem 0.75rem;
   width: 26rem;
