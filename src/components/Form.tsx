@@ -14,13 +14,13 @@ const StyledForm = styled.form`
   max-width: 72rem;
   margin: 1rem auto;
   background-color: var(--color-white);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-lg);
   padding: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 `;
 
 const SubHeading = styled.h2`
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-md);
 `;
 
@@ -31,12 +31,12 @@ const Field = styled.div`
 `;
 
 const StyledLabel = styled.label`
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-size: var(--font-size-sm);
 
   span {
     display: block;
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
     font-size: var(--font-size-xs);
     color: var(--color-gray-500);
     margin-top: 0.25rem;
@@ -47,7 +47,7 @@ const Input = styled.input`
   padding: 0.5rem 0.75rem;
   font-size: var(--font-size-sm);
   border: 1px solid var(--color-gray-300);
-  border-radius: 0.375rem;
+  border-radius: var(--radius-md);
   min-width: 12rem;
 
   &:focus {
@@ -61,7 +61,7 @@ const TextArea = styled.textarea`
   padding: 0.5rem 0.75rem;
   font-size: var(--font-size-sm);
   border: 1px solid var(--color-gray-300);
-  border-radius: 0.375rem;
+  border-radius: var(--radius-md);
   resize: vertical;
 
   &:focus {

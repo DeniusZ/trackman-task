@@ -28,7 +28,7 @@ const StyledFacilityCard = styled.div`
   gap: 0.75rem;
 
   background: var(--color-white);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-lg);
 
   transition: box-shadow 0.2s ease-in-out;
 
@@ -76,7 +76,7 @@ const BottomContainer = styled.div`
 const ImageContainer = styled.div`
   position: relative;
   overflow: hidden;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
 `;
 
 const ButtonContainer = styled.div`
@@ -96,7 +96,7 @@ const DefaultIcon = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
 `;
 
 const StyledLink = styled(Link)`

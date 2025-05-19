@@ -17,9 +17,9 @@ export type LabelProps = {
 
 export const Label = styled.span<LabelProps>`
   padding: 2px 6px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-sm);
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   letter-spacing: 0.5px;
   ${(props) => variants[props.variant ?? "default"]}
 `;

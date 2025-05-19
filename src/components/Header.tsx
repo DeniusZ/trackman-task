@@ -19,7 +19,7 @@ const Links = styled.ul`
 
 const Link = styled.li`
   font-size: var(--font-size-base);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   letter-spacing: 0.5px;
 
   > a {

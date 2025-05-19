@@ -12,7 +12,7 @@ const StyledPageNotFound = styled.main`
 const Box = styled.div`
   background-color: var(--color-white);
   border: 1px solid var(--color-gray-700);
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
 
   padding: 4.8rem;
   flex: 0 1 96rem;

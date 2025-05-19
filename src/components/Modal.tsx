@@ -18,7 +18,7 @@ const Backdrop = styled.div`
 
 const StyledModal = styled.div`
   background-color: var(--color-white);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-lg);
   padding: 0.5rem 0.75rem 0.75rem;
   width: 26rem;
   display: flex;

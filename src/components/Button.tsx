@@ -7,13 +7,13 @@ const sizes = {
   `,
   small: css`
     font-size: var(--font-size-sm);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     padding: 0.4rem 1.5rem;
     height: 2rem;
   `,
   medium: css`
     font-size: var(--font-size-sm);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     padding: 0.5rem 1.5rem;
     height: 2.25rem;
   `,
@@ -44,7 +44,7 @@ export type ButtonProps = {
 };
 
 export const Button = styled.button<ButtonProps>`
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;

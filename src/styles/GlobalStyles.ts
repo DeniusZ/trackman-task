@@ -38,6 +38,17 @@ const GlobalStyles = createGlobalStyle`
   --font-size-base: 1rem;
   --font-size-md: 1.125rem;
   --font-size-lg: 1.75rem;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 1rem;
+  --radius-full: 50%;
+
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
 }
 
 body {
