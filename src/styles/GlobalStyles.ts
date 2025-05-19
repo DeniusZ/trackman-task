@@ -58,7 +58,7 @@ body {
   font-size: var(--font-size-base);
   letter-spacing: 0.25px;
 
-  color: #1E1E1E
+  color: var(--color-gray-700)
 }
 `;
 

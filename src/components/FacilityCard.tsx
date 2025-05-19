@@ -9,15 +9,30 @@ import { useState } from "react";
 import { DeleteModal } from "./DeleteModal";
 import { useFacilities } from "../contexts/FacilitiesContext";
 
+const Description = styled.p`
+  position: absolute;
+  color: var(--color-white);
+  top: 0.5rem;
+  left: 0.5rem;
+  overflow-y: scroll;
+  height: 92%;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+`;
+
 const StyledImage = styled.img`
-  height: 12rem;
+  height: 100%;
   width: 100%;
 
   object-fit: cover;
   display: block;
 
   transition-duration: 0.3s;
-  transition-property: transform, filter;
+  transition-property: transform, filter, background;
 `;
 
 const StyledFacilityCard = styled.div`
@@ -40,6 +55,12 @@ const StyledFacilityCard = styled.div`
   &:hover ${StyledImage}, &:focus-within ${StyledImage} {
     filter: brightness(0.7);
     transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &:hover ${Description}, &:focus-within ${Description} {
+    opacity: 1;
+    pointer-events: auto;
   }
 `;
 
@@ -74,6 +95,7 @@ const BottomContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
+  height: 12rem;
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-sm);
@@ -110,6 +132,7 @@ export type FacilityCardProps = {
   closingTime: string;
   imageUrl: string;
   isDefault?: boolean;
+  description: string;
   id: number;
 };
 
@@ -120,6 +143,7 @@ export const FacilityCard: React.FC<FacilityCardProps> = ({
   closingTime,
   imageUrl,
   isDefault,
+  description,
   id,
 }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -140,6 +164,7 @@ export const FacilityCard: React.FC<FacilityCardProps> = ({
             <img src={iconStar} />
           </DefaultIcon>
         )}
+        <Description>{description}</Description>
       </ImageContainer>
       <StyledHeading>
         <StyledName>{name}</StyledName>
