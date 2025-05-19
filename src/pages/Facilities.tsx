@@ -18,16 +18,25 @@ const StyledLink = styled(Link)`
 `;
 
 export const Facilities: React.FC = () => {
-  const { facilities } = useFacilities();
+  const { facilities, getDummyData } = useFacilities();
 
   return (
     <Container>
       <StyledLink to="new">
         <Button>Create Facility</Button>
       </StyledLink>
-      {facilities.map((facility) => {
-        return <FacilityCard key={facility.id} {...facility} />;
-      })}
+      {facilities.length === 0 ? (
+        <div style={{ marginTop: "4rem" }}>
+          <Button variant="secondary" onClick={getDummyData}>
+            Generate Facilities
+          </Button>
+          <p>For testing and demo purposes only</p>
+        </div>
+      ) : (
+        facilities.map((facility) => {
+          return <FacilityCard key={facility.id} {...facility} />;
+        })
+      )}
     </Container>
   );
 };

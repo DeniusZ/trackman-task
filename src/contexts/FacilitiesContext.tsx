@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, useContext, useEffect } from "react";
 import type { Facility } from "../types";
 import type { ReactNode } from "react";
-import { sortFacilitiesByDefaultFirst } from "../utils/helpers";
+import { dummyData, sortFacilitiesByDefaultFirst } from "../utils/helpers";
 
 // State types
 type State = {
@@ -25,6 +25,7 @@ type FacilitiesContextType = {
   createFacility: (facility: Facility) => Promise<void>;
   editFacility: (facility: Facility) => Promise<void>;
   deleteFacility: (id: number) => Promise<void>;
+  getDummyData: () => void;
 };
 
 const initialState: State = {
@@ -129,6 +130,11 @@ export const FacilitiesProvider: React.FC<{ children: ReactNode }> = ({
     }
   };
 
+  const getDummyData = () => {
+    dispatch({ type: "facilities/loaded", payload: dummyData });
+    localStorage.setItem("facilities", JSON.stringify(dummyData));
+  };
+
   useEffect(() => {
     getFacilities();
   }, []);
@@ -142,6 +148,7 @@ export const FacilitiesProvider: React.FC<{ children: ReactNode }> = ({
         createFacility,
         editFacility,
         deleteFacility,
+        getDummyData,
       }}
     >
       {children}
