@@ -1,3 +1,5 @@
+import type { Facility } from "../types";
+
 export const isFacilityOpen = (
   openingHour: string,
   closingHour: string
@@ -14,6 +16,12 @@ export const isFacilityOpen = (
   closeTime.setHours(closeHour, closeMinute, 0, 0);
 
   return now >= openTime && now <= closeTime;
+};
+
+export const sortFacilitiesByDefaultFirst = (list: Facility[]): Facility[] => {
+  return [...list].sort((a, b) =>
+    a.isDefault === b.isDefault ? 0 : a.isDefault ? -1 : 1
+  );
 };
 
 // const dummyData: Facility[] = [

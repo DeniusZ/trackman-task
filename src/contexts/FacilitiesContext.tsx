@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useContext, useEffect } from "react";
 import type { Facility } from "../types";
 import type { ReactNode } from "react";
+import { sortFacilitiesByDefaultFirst } from "../utils/helpers";
 
 // State types
 type State = {
@@ -83,8 +84,9 @@ export const FacilitiesProvider: React.FC<{ children: ReactNode }> = ({
         isDefault: newFacility.isDefault ? false : f.isDefault,
       }));
       const updated = [...existing, newFacility];
-      localStorage.setItem("facilities", JSON.stringify(updated));
-      dispatch({ type: "facility/created", payload: updated });
+      const sorted = sortFacilitiesByDefaultFirst(updated);
+      localStorage.setItem("facilities", JSON.stringify(sorted));
+      dispatch({ type: "facility/created", payload: sorted });
     } catch {
       dispatch({ type: "error", payload: "Failed to create facility." });
     }
@@ -102,9 +104,9 @@ export const FacilitiesProvider: React.FC<{ children: ReactNode }> = ({
           f.id !== updatedFacility.id ? { ...f, isDefault: false } : f
         );
       }
-
-      localStorage.setItem("facilities", JSON.stringify(updated));
-      dispatch({ type: "facility/updated", payload: updated });
+      const sorted = sortFacilitiesByDefaultFirst(updated);
+      localStorage.setItem("facilities", JSON.stringify(sorted));
+      dispatch({ type: "facility/updated", payload: sorted });
     } catch {
       dispatch({ type: "error", payload: "Failed to update facility." });
     }
