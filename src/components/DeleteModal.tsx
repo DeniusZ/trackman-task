@@ -3,6 +3,7 @@ import { Modal } from "./Modal";
 import { Button } from "./Button";
 import styled from "styled-components";
 import { iconClose } from "../assets/icons";
+import { useEffect } from "react";
 
 const TopContainer = styled.div`
   display: flex;
@@ -36,6 +37,18 @@ export const DeleteModal: React.FC<DeleteModalProps> = ({
   onClose,
   onDelete,
 }) => {
+  // onDelete when "Enter" key is pressed
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
+        onDelete();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [onDelete]);
+
   return (
     <Modal onClose={onClose}>
       <TopContainer>

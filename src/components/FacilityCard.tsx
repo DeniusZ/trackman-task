@@ -14,7 +14,8 @@ const Description = styled.p`
   position: absolute;
   color: var(--color-white);
   top: 0.5rem;
-  left: 0.5rem;
+  left: 2.85rem;
+  font-size: var(--font-size-sm);
   overflow-y: scroll;
   height: 92%;
   overflow-y: auto;

@@ -30,8 +30,8 @@ export const dummyData: Facility[] = [
     name: "Green Valley Golf Club",
     address: "123 Fairway Drive, Copenhagen, Denmark",
     description:
-      "Nestled in the heart of Copenhagen, Green Valley Golf Club offers an 18-hole championship course surrounded by lush greenery and scenic landscapes. With top-tier facilities, a modern clubhouse, and expert coaching programs, it's perfect for both beginners and seasoned golfers. With top-tier facilities, a modern clubhouse, and expert coaching programs, it's perfect for both beginners and seasoned golfers.",
-    openingTime: "9:00",
+      "Nestled in the heart of Copenhagen, Green Valley Golf Club offers an 18-hole championship course surrounded by lush greenery and scenic landscapes. With top-tier facilities, a modern clubhouse, and expert coaching programs, it's perfect for both beginners and seasoned golfers. Nestled in the heart of Copenhagen, Green Valley Golf Club offers an 18-hole championship course surrounded by lush greenery and scenic landscapes. With top-tier facilities, a modern clubhouse, and expert coaching programs, it's perfect for both beginners and seasoned golfers. Nestled in the heart of Copenhagen, Green Valley Golf Club offers an 18-hole championship course surrounded by lush greenery and scenic landscapes. With top-tier facilities, a modern clubhouse, and expert coaching programs, it's perfect for both beginners and seasoned golfers.",
+    openingTime: "10:00",
     closingTime: "14:00",
     imageUrl: img1,
     id: 1000,
@@ -42,7 +42,7 @@ export const dummyData: Facility[] = [
     address: "123 Fairway Drive, Copenhagen, Denmark",
     description:
       "Nestled in the heart of Copenhagen, Green Valley Golf Club offers an 18-hole championship course surrounded by lush greenery and scenic landscapes. With top-tier facilities, a modern clubhouse, and expert coaching programs, it's perfect for both beginners and seasoned golfers.",
-    openingTime: "8:00",
+    openingTime: "08:00",
     closingTime: "18:00",
     imageUrl: img2,
     id: 1111,
@@ -52,8 +52,8 @@ export const dummyData: Facility[] = [
     name: "Green Valley Golf Club 3",
     address: "123 Fairway Drive, Copenhagen, Denmark",
     description:
-      "Nestled in the heart of Copenhagen, Green Valley Golf Club offers an 18-hole championship course surrounded by lush greenery and scenic landscapes. With top-tier facilities, a modern clubhouse, and expert coaching programs, it's perfect for both beginners and seasoned golfers. With top-tier facilities, a modern clubhouse, and expert coaching programs, it's perfect for both beginners and seasoned golfers.",
-    openingTime: "8:00",
+      "Nestled in the heart of Copenhagen, Green Valley Golf Club offers an 18-hole championship course surrounded by lush greenery and scenic landscapes. With top-tier facilities, a modern clubhouse, and expert coaching programs, it's perfect for both beginners and seasoned golfers.",
+    openingTime: "08:00",
     closingTime: "18:00",
     imageUrl: img3,
     id: 2222,
@@ -64,7 +64,7 @@ export const dummyData: Facility[] = [
     address: "123 Fairway Drive, Copenhagen, Denmark",
     description:
       "Nestled in the heart of Copenhagen, Green Valley Golf Club offers an 18-hole championship course surrounded by lush greenery and scenic landscapes. With top-tier facilities, a modern clubhouse, and expert coaching programs, it's perfect for both beginners and seasoned golfers.",
-    openingTime: "8:00",
+    openingTime: "08:00",
     closingTime: "18:00",
     imageUrl: img4,
     id: 3333,
