@@ -31,7 +31,7 @@ const Link = styled.li`
     color: var(--color-gray-400);
     text-decoration: none;
     &.active,
-    &.hover {
+    &:hover {
       color: var(--color-gray-100);
     }
   }

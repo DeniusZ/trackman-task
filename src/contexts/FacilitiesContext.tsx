@@ -3,7 +3,6 @@ import type { Facility } from "../types";
 import type { ReactNode } from "react";
 import { dummyData, sortFacilitiesByDefaultFirst } from "../utils/helpers";
 
-// State types
 type State = {
   facilities: Facility[];
   isLoading: boolean;
@@ -131,8 +130,8 @@ export const FacilitiesProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const getDummyData = () => {
-    dispatch({ type: "facilities/loaded", payload: dummyData });
     localStorage.setItem("facilities", JSON.stringify(dummyData));
+    dispatch({ type: "facilities/loaded", payload: dummyData });
   };
 
   useEffect(() => {

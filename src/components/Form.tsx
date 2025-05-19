@@ -126,9 +126,7 @@ export const Form: React.FC<FormProps> = ({ facilityToEdit }) => {
 
   const isEditSession = Boolean(editId);
 
-  // if the facility is being edited and there is only one facility - it is the first entry
-  const isFirstEntry =
-    facilities.length === 0 || (isEditSession && facilities.length === 1);
+  const isFirstEntry = facilities.length === 0;
 
   const { register, handleSubmit, formState } = useForm<Facility>({
     defaultValues: {
@@ -211,7 +209,7 @@ export const Form: React.FC<FormProps> = ({ facilityToEdit }) => {
             type="checkbox"
             id="isDefault"
             {...register("isDefault")}
-            disabled={isFirstEntry}
+            disabled={isFirstEntry || (isEditSession && editValues.isDefault)}
           />
         </CheckboxWrapper>
       </CheckboxField>
