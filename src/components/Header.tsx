@@ -13,14 +13,18 @@ const StyledHeader = styled.nav`
 const Links = styled.ul`
   display: flex;
   list-style: none;
-  margin-left: 2.75rem;
-  gap: 2rem;
+  gap: 1rem;
+  @media (min-width: 768px) {
+    margin-left: 2.75rem;
+    gap: 2rem;
+  }
 `;
 
 const Link = styled.li`
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
   letter-spacing: 0.5px;
+  white-space: nowrap;
 
   > a {
     transition: color 0.2s ease-in-out;

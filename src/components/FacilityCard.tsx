@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { DeleteModal } from "./DeleteModal";
 import { useFacilities } from "../contexts/FacilitiesContext";
+import type { Facility } from "../types";
 
 const Description = styled.p`
   position: absolute;
@@ -125,16 +126,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-export type FacilityCardProps = {
-  name: string;
-  address: string;
-  openingTime: string;
-  closingTime: string;
-  imageUrl: string;
-  isDefault?: boolean;
-  description: string;
-  id: number;
-};
+export type FacilityCardProps = Facility;
 
 export const FacilityCard: React.FC<FacilityCardProps> = ({
   name,
