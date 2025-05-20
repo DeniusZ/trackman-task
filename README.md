@@ -7,6 +7,7 @@ A lightweight React + TypeScript app for managing facilities using Context API, 
 - 📦 Global state management via React Context API + `useReducer`
 - 🎨 Styling with `styled-components` and CSS variables (for global tokens like color and font size)
 - 🧾 Form management using `react-hook-form`
+- 🗺️ Routing with react-router
 - 💾 Persistent storage via `localStorage`
 - 🧪 Unit tested with Vitest + Testing Library
 - ⚡ Lightning-fast dev experience with Vite
